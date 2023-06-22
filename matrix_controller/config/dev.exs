@@ -15,7 +15,8 @@ config :matrix_controller, MatrixControllerWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "xAUOjQlTmy0KFnWfzUB3kDrHJGFGF267O64UA1/jZVueYa19XbCu8J41H6U+uuYj",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
+    # esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 

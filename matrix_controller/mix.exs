@@ -39,13 +39,13 @@ defmodule MatrixController.MixProject do
       {:heroicons, "~> 0.5"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.7.2"},
-      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.1.8", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:leaf_hdmi_matrix, path: "../leaf_hdmi_matrix"}
+      {:leaf_hdmi_matrix, path: "../leaf_hdmi_matrix"},
+      {:live_svelte, "~> 0.8.0"}
     ]
   end
 
@@ -58,8 +58,15 @@ defmodule MatrixController.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "assets.setup"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
+      "assets.setup": [
+        "tailwind.install --if-missing",
+        "cmd --cd assets npm install"
+      ],
+      "assets.deploy": [
+        "tailwind default --minify",
+        "cmd --cd assets node build.js --deploy",
+        "phx.digest"
+      ]
     ]
   end
 end

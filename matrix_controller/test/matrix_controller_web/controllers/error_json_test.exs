@@ -2,7 +2,9 @@ defmodule MatrixControllerWeb.ErrorJSONTest do
   use MatrixControllerWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert MatrixControllerWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert MatrixControllerWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do

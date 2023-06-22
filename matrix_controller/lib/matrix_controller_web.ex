@@ -85,6 +85,8 @@ defmodule MatrixControllerWeb do
       # Core UI components and translation
       import MatrixControllerWeb.CoreComponents
 
+      import LiveSvelte
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
