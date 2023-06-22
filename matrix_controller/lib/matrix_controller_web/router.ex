@@ -2,22 +2,23 @@ defmodule MatrixControllerWeb.Router do
   use MatrixControllerWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_live_flash
-    plug :put_root_layout, {MatrixControllerWeb.Layouts, :root}
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_live_flash)
+    plug(:put_root_layout, {MatrixControllerWeb.Layouts, :root})
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", MatrixControllerWeb do
-    pipe_through :browser
+    pipe_through(:browser)
 
-    get "/", PageController, :home
+    live("/", TestLive)
+    live("/svelte", SvelteLive)
   end
 
   # Other scopes may use custom stacks.
@@ -35,9 +36,9 @@ defmodule MatrixControllerWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
-      pipe_through :browser
+      pipe_through(:browser)
 
-      live_dashboard "/dashboard", metrics: MatrixControllerWeb.Telemetry
+      live_dashboard("/dashboard", metrics: MatrixControllerWeb.Telemetry)
     end
   end
 end
