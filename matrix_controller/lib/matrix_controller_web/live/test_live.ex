@@ -6,18 +6,13 @@ defmodule MatrixControllerWeb.TestLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :target, "LiveView")}
+    {:ok, socket}
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <.HelloWorld target={@target} />
+    <.HelloWorld />
     """
-  end
-
-  def handle_event("set_target", %{"target" => target}, socket) do
-    Logger.info("Setting target to #{target}")
-    {:noreply, assign(socket, :target, target)}
   end
 end

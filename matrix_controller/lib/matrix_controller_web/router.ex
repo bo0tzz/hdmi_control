@@ -18,7 +18,6 @@ defmodule MatrixControllerWeb.Router do
     pipe_through(:browser)
 
     live("/", TestLive)
-    live("/svelte", SvelteLive)
   end
 
   # Other scopes may use custom stacks.
