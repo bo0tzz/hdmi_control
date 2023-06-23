@@ -27,38 +27,10 @@ let optsClient = {
     ],
 }
 
-let optsServer = {
-    entryPoints: ["js/server.js"],
-    platform: "node",
-    format: "cjs",
-    bundle: true,
-    minify: false,
-    target: "node19.6.1",
-    conditions: ["svelte"],
-    outdir: "../priv/static/assets/server",
-    logLevel: "info",
-    sourcemap: watch ? "inline" : false,
-    watch,
-    tsconfig: "./tsconfig.json",
-    plugins: [
-        importGlobPlugin(),
-        sveltePlugin({
-            preprocess: sveltePreprocess(),
-            compilerOptions: {hydratable: true, generate: "ssr", format: "cjs"},
-        }),
-    ],
-}
-
 const client = esbuild.build(optsClient)
-const server = esbuild.build(optsServer)
 
 if (watch) {
     client.then(_result => {
-        process.stdin.on("close", () => process.exit(0))
-        process.stdin.resume()
-    })
-
-    server.then(_result => {
         process.stdin.on("close", () => process.exit(0))
         process.stdin.resume()
     })
