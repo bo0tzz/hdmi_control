@@ -1,10 +1,10 @@
 {
   "devDependencies": {
-    "@tsconfig/svelte": "^4.0.1",
+    "@tsconfig/svelte": "^3.0.0",
     "esbuild": "^0.16.17",
     "esbuild-plugin-import-glob": "^0.1.1",
     "esbuild-svelte": "^0.7.3",
-    "svelte": "^4.0.0",
+    "svelte": "^3.59.2",
     "svelte-check": "^3.4.4",
     "svelte-preprocess": "^5.0.4",
     "typescript": "^5.1.3"
