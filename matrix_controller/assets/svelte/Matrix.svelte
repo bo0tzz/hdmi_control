@@ -1,10 +1,14 @@
 <script lang="ts">
-  import { Node, Group, Svelvet } from "svelvet";
+  import { Node, Group, Svelvet, Edge } from "svelvet";
+
+  let selectedInput;
+  let selectedOutput;
 
   let inputs = [
     {
       name: "Chromecast",
       id: "in-1",
+      connections: ["out-2"],
     },
     {
       name: "PC",
@@ -30,41 +34,41 @@
       id: "out-8",
     },
   ];
+
+  let outputConnected = (e: CustomEvent) => console.log(e.detail);
+
+  let inputClicked = (e: CustomEvent) => {
+    selectedInput = e.detail.node.id;
+    if (selectedOutput) {
+    }
+    console.log(e.detail.node.anchors);
+  };
+
+  let outputClicked = (e: CustomEvent) => {
+    console.log(e.detail.node.id);
+  };
 </script>
 
 <div class="h-screen">
-  <Svelvet id="matrix" fitView={true}>
-    <!-- <Group
-      color="teal"
-      groupName="Inputs"
-      position={{ x: 0, y: 0 }}
-      width={220}
-      height={inputs.length * 110 + 10}
-    > -->
+  <Svelvet fitView={true}>
     {#each inputs as input, i}
       <Node
         label={input.name}
         id={input.id}
         position={{ x: 0, y: 10 + 110 * i }}
         inputs={0}
+        on:nodeClicked={inputClicked}
       />
     {/each}
-    <!-- </Group> -->
-    <!-- <Group
-      color="orange"
-      groupName="Outputs"
-      position={{ x: 300, y: 0 }}
-      width={220}
-      height={outputs.length * 110 + 10}
-    > -->
     {#each outputs as output, i}
       <Node
         label={output.name}
         id={output.id}
         position={{ x: 300, y: 10 + 110 * i }}
         outputs={0}
+        on:connection={outputConnected}
+        on:nodeClicked={outputClicked}
       />
     {/each}
-    <!-- </Group> -->
   </Svelvet>
 </div>

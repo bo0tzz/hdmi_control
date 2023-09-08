@@ -12,7 +12,7 @@ defmodule MatrixControllerWeb.TestLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.HelloWorld />
+    <.Matrix />
     """
   end
 end
