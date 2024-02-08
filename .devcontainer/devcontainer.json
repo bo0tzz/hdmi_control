@@ -4,7 +4,7 @@
     "dockerComposeFile": [
         "docker-compose.yaml"
     ],
-    "workspaceFolder": "/home/vscode/app",
+    "workspaceFolder": "/workspaces/hdmi_control",
     "postCreateCommand": "bash .devcontainer/setup-dev.sh",
     "customizations": {
         "vscode": {
