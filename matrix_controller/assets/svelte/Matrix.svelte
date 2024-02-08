@@ -24,6 +24,7 @@
     {
       name: "Monitor",
       id: "out-2",
+      connections: ["in-1"],
     },
     {
       name: "Projector",
@@ -35,18 +36,21 @@
     },
   ];
 
-  let outputConnected = (e: CustomEvent) => console.log(e.detail);
+  let outputConnected = (e: CustomEvent) => console.log(e);
 
   let inputClicked = (e: CustomEvent) => {
     selectedInput = e.detail.node.id;
     if (selectedOutput) {
     }
-    console.log(e.detail.node.anchors);
+    console.log(e);
   };
 
   let outputClicked = (e: CustomEvent) => {
     console.log(e.detail.node.id);
   };
+
+  $: if (selectedInput && selectedOutput) {
+  }
 </script>
 
 <div class="h-screen">
