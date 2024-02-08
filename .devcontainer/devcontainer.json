@@ -1,7 +1,11 @@
 {
     "name": "Elixir dev",
     "service": "phoenix",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
     "workspaceFolder": "/home/vscode/app",
+    "postCreateCommand": "bash .devcontainer/setup-dev.sh",
     "customizations": {
         "vscode": {
             "extensions": [
