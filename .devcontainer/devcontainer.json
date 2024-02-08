@@ -1,0 +1,23 @@
+{
+    "name": "Elixir dev",
+    "service": "phoenix",
+    "workspaceFolder": "/home/vscode/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "JakeBecker.elixir-ls",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "bradlc.vscode-tailwindcss",
+                "stylelint.vscode-stylelint",
+                "ms-azuretools.vscode-docker",
+                "pantajoe.vscode-elixir-credo",
+                "stkb.rewrap",
+                "samuel-pordeus.elixir-test"
+            ],
+            "settings": {
+                "terminal.integrated.shell.linux": "/usr/bin/zsh"
+            }
+        }
+    }
+}
